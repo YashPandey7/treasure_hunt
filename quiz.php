@@ -41,7 +41,7 @@ include "./partials/dbconnect.php";
             border: 1px solid red;
             display: inline-block;
             color: red;
-            width: 100px;
+            width: 200px;
             text-align: center;
             border-radius: 3px;
             margin-top: 7px;
@@ -74,7 +74,7 @@ include "./partials/dbconnect.php";
 
 <form action="welcome.php" method="post">
         
-        <div class="container-fluid">
+        <div class="container-fluid ">
             <div class="d-flex justify-content-center row">
                 <div class="col-md-10 col-lg-10">
                     <div class="border">
@@ -146,5 +146,7 @@ include "./partials/dbconnect.php";
     </form>
 
 </body>
+
+
 
 </html>
