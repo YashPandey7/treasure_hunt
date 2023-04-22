@@ -24,7 +24,7 @@
 					}
 				?>
 				<h4>
-					<?php echo $ques[1]; ?>
+					<!-- <?php echo $ques[1]; ?> -->
 				</h4>
 				<div class="input-group-text" style="text-align: left; font-size: 18px;">
 					<ol>
