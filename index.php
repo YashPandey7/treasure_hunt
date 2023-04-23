@@ -27,6 +27,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 				$_SESSION['countdown_start_time'] = time(); // set the start time to the current time
 				$_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
 				$_SESSION['answer1'] = 1;
+				$_SESSION['answer2'] = 0;
+				$_SESSION['answer3'] = 0;
+				$_SESSION['answer4'] = 0;
+				$_SESSION['answer5'] = 0;
                 header("location: ./q1.php");
               }
               else{
