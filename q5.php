@@ -103,29 +103,86 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Document</title>
+
+    <style>
+        .bg {
+            background-image: url('./images/5.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            bottom: 0;
+            filter: contrast(.7) brightness(.7);
+            left: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        header {
+            background-color: black;
+            opacity: 0.8;
+            padding: 20px 20px 10px 20px;
+            border-radius: 8px;
+            min-width:70%;
+        }
+
+        .content {
+            align-items: center;
+            bottom: 0;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            font-family: sans-serif;
+            justify-content: center;
+            left: 0;
+            /* padding: 20vw; */
+            position: fixed;
+            right: 0;
+            text-align: center;
+            top: 0;
+        }
+
+        @media screen and (max-width: 1024px) {
+            .content{
+                margin:20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>" method="post">
-    <div>
-        <b>Question 5:</b>
-        When friends come by with news to tell,
-        Let them in when you hear this bell. </div><br>
-        <input type="text" placeholder="enter your answer" name="ans5">
-        <button type="button" onclick="clicks()">hint </button>
-        <button type="submit">Submit </button>
-    </form>
 
-    <p id="hint"></p><br>
-
-    <!-- Display Timer -->
-    <div id="countdown"></div>
-
+    <div class="bg"></div>
+    <div class="content">
+        <header>
+                <div id="countdown"></div><br>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+                <h4>
+                    <b>Question 5:</b>
+                    When friends come by with news to tell,
+        Let them in when you hear this bell.
+                </h4><br>
+                <div class="form-row" >
+                    <div class="form-group col-md-9" style="text-align: center; margin-top:8px;">
+                        <input type="text" placeholder="Enter your answer..." name="ans5" class="form-control">
+                    </div>
+                    <div class="form-group col-md-3" style="text-align: center; margin-top:8px; ">
+                        <button type="submit" class="btn btn-primary">Submit </button>
+                        <button type="button" class="btn btn-primary" onclick="clicks()">Hint </button>
+                    </div>
+                </div>
+            </form><br>
+            <p id="hint"></p>
+        </header>
+    </div>
 </body>
 
 <script type="text/javascript">
     function clicks(){
-        document.getElementById('hint').innerHTML="Doorbell";
+        document.getElementById('hint').innerHTML="Answer : ' Doorbell '.";
     }
 
     // get the start time and duration from PHP session
@@ -142,7 +199,7 @@
         if (remaining_time >= 0) {
             var minutes = Math.floor(remaining_time / 60);
             var seconds = remaining_time % 60;
-            document.getElementById('countdown').innerHTML = minutes + ' minutes ' + seconds + ' seconds';
+            document.getElementById('countdown').innerHTML = '<b>Remaining Time :</b> ' + minutes + ' minutes ' + seconds + ' seconds';
         } else {
             document.getElementById('countdown').innerHTML = 'Time is up!';
         }
