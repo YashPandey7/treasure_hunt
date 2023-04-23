@@ -140,7 +140,7 @@
     <div class="content">
         <header>
                 <div id="countdown"></div><br>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post" autocomplete="off">
                 <h4>
                     <b>Question 3:</b>
                     I'll keep you dry on a rainy day, In the wind I might just blow away.

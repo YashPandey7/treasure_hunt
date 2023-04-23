@@ -145,7 +145,7 @@
     <div class="content">
         <header>
                 <div id="countdown"></div><br>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post" autocomplete="off">
                 <h4>
                     <b>Question 4:</b>
                     In a bowl or on a hook, Keep me somewhere you will look.<br> On a shelf or in your pocket Have me near before you lock it.

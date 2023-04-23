@@ -147,7 +147,7 @@
     <div class="content">
         <header>
                 <div id="countdown"></div><br>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post" autocomplete="off">
                 <h4>
                     <b>Question 2:</b>
                     I have a neck but no head, yet can still wear a cap.

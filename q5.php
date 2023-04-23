@@ -165,7 +165,7 @@
     <div class="content">
         <header>
                 <div id="countdown"></div><br>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post" autocomplete="off">
                 <h4>
                     <b>Question 5:</b>
                     When friends come by with news to tell,

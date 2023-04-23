@@ -152,7 +152,7 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
     <div class="content">
         <header>
                 <div id="countdown"></div><br>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>"  method="post" autocomplete="off">
                 <h4>
                     <b>Question 1:</b>
                     I have hands but cannot clap?
