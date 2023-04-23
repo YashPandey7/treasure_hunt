@@ -1,16 +1,9 @@
 <?php
     session_start();
-    if(isset($_SESSION['answer1']))
+    if(isset($_SESSION['answer3']))
     {
-        echo "Your Prev. answer was \"".$_SESSION['answer1']."\" <br><br>";
+        echo "Your Prev. answer was \"".$_SESSION['answer4']."\" <br><br>";
     }
-
-    // if($_SERVER["REQUEST_METHOD"] == "POST")
-    // {
-    //     $ans2 = $_REQUEST['ans2'];
-    //     $_SESSION['answer2'] = $_REQUEST['ans2'];
-    //     header("location: ./q3.php");
-    // }
 
     if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_duration'])) {
         $start_time = $_SESSION['countdown_start_time'];
@@ -21,21 +14,21 @@
             // countdown timer has already expired, clear the session variables
             // unset($_SESSION['countdown_start_time']);
             // unset($_SESSION['countdown_duration']);
-            $_SESSION['answer2'] = 0;
+            $_SESSION['answer4'] = 0;
             if($_SERVER["REQUEST_METHOD"]=="POST")
         {
         include "./partials/dbconnect.php";
     
-        $correct_word = "bottle";
-        $input_word = $_REQUEST['ans2'];
+        $correct_word = "Keys";
+        $input_word = $_REQUEST['ans4'];
     
         if (strtolower($correct_word) == strtolower($input_word)) {
             // session_start();
             // $_SESSION['answer1'] = 1;
             $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
             $_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
-            $_SESSION['answer3'] = 1;
-            header("location: ./q3.php");
+            $_SESSION['answer4'] = 1;
+            header("location: ./q5.php");
         }
         else if(strtolower($input_word) == '')
         {
@@ -55,16 +48,16 @@
         {
         include "./partials/dbconnect.php";
     
-        $correct_word = "bottle";
-        $input_word = $_REQUEST['ans2'];
+        $correct_word = "Keys";
+        $input_word = $_REQUEST['ans4'];
     
         if (strtolower($correct_word) == strtolower($input_word)) {
             // session_start();
             // $_SESSION['answer2'] = 1;
             $_SESSION['countdown_start_time'] = time();
             $_SESSION['countdown_duration'] = 60*2;
-            $_SESSION['answer2'] = 1;
-            header("location: ./q3.php");
+            $_SESSION['answer4'] = 1;
+            header("location: ./q5.php");
         }
         else if(strtolower($input_word) == '')
         {
@@ -91,8 +84,11 @@
 </head>
 <body>
     <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>" method="post">
-        <div>Question 2: I have a neck but no head, yet can still wear a cap. </div><br>
-        <input type="text" placeholder="enter your answer" name="ans2">
+    <div>
+        <b>Question 4:</b>
+        <br> In a bowl or on a hook, Keep me somewhere you will look.<br>
+     On a shelf or in your pocket Have me near before you lock it. </div><br>
+        <input type="text" placeholder="enter your answer" name="ans4">
         <button type="button" onclick="clicks()">hint </button>
         <button type="submit">next question </button>
     </form>
@@ -106,7 +102,7 @@
 
 <script type="text/javascript">
     function clicks(){
-        document.getElementById('hint').innerHTML="Bottle";
+        document.getElementById('hint').innerHTML="Keys";
     }
 
     // get the start time and duration from PHP session

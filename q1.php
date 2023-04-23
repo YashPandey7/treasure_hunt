@@ -1,33 +1,72 @@
 <?php
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
+session_start();
+
+if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_duration'])) {
+    $start_time = $_SESSION['countdown_start_time'];
+    $duration = $_SESSION['countdown_duration'];
+    $current_time = time();
+    $remaining_time = $start_time + $duration - $current_time;
+    if ($remaining_time < 0) {
+        // countdown timer has already expired, clear the session variables
+        // unset($_SESSION['countdown_start_time']);
+        // unset($_SESSION['countdown_duration']);
+        $_SESSION['answer1'] = 0;
+        if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
     include "./partials/dbconnect.php";
-    // $ans1 = $_REQUEST['ans1'];
-    // $sql = "INSERT INTO `ans` (`user`, `a1`, `a2`, `a3`) VALUES ( 'yash', '$ans1', '', '');";
-    // $result = mysqli_query($conn,$sql);
 
     $correct_word = "clock";
     $input_word = $_REQUEST['ans1'];
 
     if (strtolower($correct_word) == strtolower($input_word)) {
-        echo "Correct word!";
+        // session_start();
+        // $_SESSION['answer1'] = 0;
+        $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
+		$_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
+        $_SESSION['answer2'] = 1;
+        header("location: ./q2.php");
+    }
+    else if(strtolower($input_word) == '')
+    {
+        echo "Enter your answer";
     }
     else{
-        echo"wrong answer!";
+        echo"wrong answer! <br>";
     }
     
-    if($_REQUEST['ans1'] == "CLOCK")
-    {
-        session_start();
-        $_SESSION['answer1'] = $_REQUEST['ans1'];
-        // header("location: ./q2.php");
     }
+    }
+
     else
     {
-        echo "Wrong Answer <br>";
+
+        if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+    include "./partials/dbconnect.php";
+
+    $correct_word = "clock";
+    $input_word = $_REQUEST['ans1'];
+
+    if (strtolower($correct_word) == strtolower($input_word)) {
+        // session_start();
+        // $_SESSION['answer1'] = 1;
+        $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
+		$_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
+        $_SESSION['answer2'] = 1;
+        header("location: ./q2.php");
+    }
+    else if(strtolower($input_word) == '')
+    {
+        echo "Enter your answer";
+    }
+    else{
+        echo"wrong answer! <br>";
+    }
+    
+    }
+
     }
 }
-
 
 ?>
 
@@ -46,12 +85,36 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         <button type="button" onclick="clicks()">hint </button>
         <button type="submit">next question </button>
     </form>
-    <p id="hint"></p>
+    <p id="hint"></p><br>
+
+    <!-- Display Timer -->
+    <div id="countdown"></div>
+
 </body>
 
 <script type="text/javascript">
     function clicks(){
         document.getElementById('hint').innerHTML="Clock";
     }
+
+    // get the start time and duration from PHP session
+    var start_time = <?php echo $_SESSION['countdown_start_time']; ?>;
+    var duration = <?php echo $_SESSION['countdown_duration']; ?>;
+
+    // calculate the remaining time
+    var current_time = Math.floor(Date.now() / 1000);
+    var remaining_time = start_time + duration - current_time;
+
+    // update the countdown timer every second
+    setInterval(function() {
+        remaining_time--;
+        if (remaining_time >= 0) {
+            var minutes = Math.floor(remaining_time / 60);
+            var seconds = remaining_time % 60;
+            document.getElementById('countdown').innerHTML = minutes + ' minutes ' + seconds + ' seconds';
+        } else {
+            document.getElementById('countdown').innerHTML = 'Time is up!';
+        }
+    }, 1000);
 </script>
 </html>

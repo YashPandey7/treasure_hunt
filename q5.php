@@ -1,16 +1,12 @@
 <?php
+    include "./partials/dbconnect.php";
+
     session_start();
-    if(isset($_SESSION['answer1']))
+    if(isset($_SESSION['answer4']))
     {
-        echo "Your Prev. answer was \"".$_SESSION['answer1']."\" <br><br>";
+        echo "Your Prev. answer was \"".$_SESSION['answer4']."\" <br><br>";
     }
 
-    // if($_SERVER["REQUEST_METHOD"] == "POST")
-    // {
-    //     $ans2 = $_REQUEST['ans2'];
-    //     $_SESSION['answer2'] = $_REQUEST['ans2'];
-    //     header("location: ./q3.php");
-    // }
 
     if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_duration'])) {
         $start_time = $_SESSION['countdown_start_time'];
@@ -21,21 +17,30 @@
             // countdown timer has already expired, clear the session variables
             // unset($_SESSION['countdown_start_time']);
             // unset($_SESSION['countdown_duration']);
-            $_SESSION['answer2'] = 0;
+            $_SESSION['answer5'] = 0;
             if($_SERVER["REQUEST_METHOD"]=="POST")
         {
         include "./partials/dbconnect.php";
     
-        $correct_word = "bottle";
-        $input_word = $_REQUEST['ans2'];
+        $correct_word = "Doorbell";
+        $input_word = $_REQUEST['ans5'];
     
         if (strtolower($correct_word) == strtolower($input_word)) {
             // session_start();
             // $_SESSION['answer1'] = 1;
             $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
             $_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
-            $_SESSION['answer3'] = 1;
-            header("location: ./q3.php");
+            $_SESSION['answer4'] = 1;
+
+            $username = $_SESSION['username'];
+            $ans1 = $_SESSION['answer1'];
+            $ans2 = $_SESSION['answer2'];
+            $ans3 = $_SESSION['answer3'];
+            $ans4 = $_SESSION['answer4'];
+            $ans5 = $_SESSION['answer5'];
+            $sql = "INSERT INTO `ans` (`user`, `a1`, `a2`, `a3`, `a4`, `a5`) VALUES ('yash', '$ans1', '$ans2', '$ans3', '$ans4', '$ans5')";
+            $result = mysqli_query($conn, $sql);
+            header("location: ./result.php");
         }
         else if(strtolower($input_word) == '')
         {
@@ -55,16 +60,26 @@
         {
         include "./partials/dbconnect.php";
     
-        $correct_word = "bottle";
-        $input_word = $_REQUEST['ans2'];
+        $correct_word = "Doorbell";
+        $input_word = $_REQUEST['ans5'];
     
         if (strtolower($correct_word) == strtolower($input_word)) {
             // session_start();
             // $_SESSION['answer2'] = 1;
             $_SESSION['countdown_start_time'] = time();
             $_SESSION['countdown_duration'] = 60*2;
-            $_SESSION['answer2'] = 1;
-            header("location: ./q3.php");
+            $_SESSION['answer5'] = 1;
+
+            $username = $_SESSION['username'];
+            $ans1 = $_SESSION['answer1'];
+            $ans2 = $_SESSION['answer2'];
+            $ans3 = $_SESSION['answer3'];
+            $ans4 = $_SESSION['answer4'];
+            $ans5 = $_SESSION['answer5'];
+            $sql = "INSERT INTO `ans` (`user`, `a1`, `a2`, `a3`, `a4`, `a5`) VALUES ('yash', '$ans1', '$ans2', '$ans3', '$ans4', '$ans5')";
+            $result = mysqli_query($conn, $sql);
+
+            header("location: ./result.php");
         }
         else if(strtolower($input_word) == '')
         {
@@ -79,6 +94,7 @@
         }
     }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -91,10 +107,13 @@
 </head>
 <body>
     <form action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ;?>" method="post">
-        <div>Question 2: I have a neck but no head, yet can still wear a cap. </div><br>
-        <input type="text" placeholder="enter your answer" name="ans2">
+    <div>
+        <b>Question 5:</b>
+        When friends come by with news to tell,
+        Let them in when you hear this bell. </div><br>
+        <input type="text" placeholder="enter your answer" name="ans5">
         <button type="button" onclick="clicks()">hint </button>
-        <button type="submit">next question </button>
+        <button type="submit">Submit </button>
     </form>
 
     <p id="hint"></p><br>
@@ -106,7 +125,7 @@
 
 <script type="text/javascript">
     function clicks(){
-        document.getElementById('hint').innerHTML="Bottle";
+        document.getElementById('hint').innerHTML="Doorbell";
     }
 
     // get the start time and duration from PHP session
