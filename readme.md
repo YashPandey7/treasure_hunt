@@ -22,10 +22,15 @@ The Treasure Hunt Game includes the following features:
 
 
 ## Screenshots
+Project Link - [yash-treasurehunt.epizy.com](http://yash-treasurehunt.epizy.com/)<br><br>
+[![App Screenshot](https://github.com/YashPandey7/treasure_hunt/blob/main/images/git/Screenshot%20(106)-min.png)](https://github.com/YashPandey7/treasure_hunt)
+[![App Screenshot](https://github.com/YashPandey7/treasure_hunt/blob/main/images/git/Screenshot%20(108)-min.png)](https://github.com/YashPandey7/treasure_hunt)
+[![App Screenshot](https://github.com/YashPandey7/treasure_hunt/blob/main/images/git/Screenshot%20(110)-min.png)](https://github.com/YashPandey7/treasure_hunt)
+[![App Screenshot](https://github.com/YashPandey7/treasure_hunt/blob/main/images/git/Screenshot%20(111)-min.png)](https://github.com/YashPandey7/treasure_hunt)
+[![App Screenshot](https://github.com/YashPandey7/treasure_hunt/blob/main/images/git/Screenshot%20(112)-min.png)](https://github.com/YashPandey7/treasure_hunt)
 
 
-
-## Author
+## Authors
 
 - [@YashPandey](https://github.com/YashPandey7)
 
