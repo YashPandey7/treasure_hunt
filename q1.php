@@ -2,6 +2,15 @@
 session_start();
 
 if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_duration'])) {
+
+    // remove extra spaces ...
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
     $start_time = $_SESSION['countdown_start_time'];
     $duration = $_SESSION['countdown_duration'];
     $current_time = time();
@@ -17,6 +26,7 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
 
     $correct_word = "clock";
     $input_word = $_REQUEST['ans1'];
+    $input_word = test_input($input_word);
 
     if (strtolower($correct_word) == strtolower($input_word)) {
         // session_start();
@@ -46,6 +56,7 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
 
     $correct_word = "clock";
     $input_word = $_REQUEST['ans1'];
+    $input_word = test_input($input_word);
 
     if (strtolower($correct_word) == strtolower($input_word)) {
         // session_start();
