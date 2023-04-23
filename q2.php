@@ -59,7 +59,7 @@
             // $_SESSION['answer2'] = 1;
             $_SESSION['countdown_start_time'] = time();
             $_SESSION['countdown_duration'] = 60*2;
-            $_SESSION['answer2'] = 1;
+            $_SESSION['answer3'] = 1;
             header("location: ./q3.php");
         }
         else if(strtolower($input_word) == '')
@@ -134,6 +134,14 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <span class="navbar-brand"><?php echo $_SESSION['username'];?></span>
+  <ul class="navbar-nav">
+    <li class="nav-item" >
+      <a class="nav-link" href="logout.php">Log Out</a>
+    </li>
+  </ul>
+</nav>
 
     <div class="bg"></div>
     <div class="content">

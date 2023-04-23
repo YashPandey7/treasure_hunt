@@ -24,9 +24,6 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
         $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
 		$_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
         $_SESSION['answer2'] = 1;
-        $_SESSION['answer3'] = 0;
-        $_SESSION['answer4'] = 0;
-        $_SESSION['answer5'] = 0;
         header("location: ./q2.php");
     }
     else if(strtolower($input_word) == '')
@@ -56,10 +53,6 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
         $_SESSION['countdown_start_time'] = time(); // set the start time to the current time
 		$_SESSION['countdown_duration'] = 60*2; // set the duration of the countdown timer in seconds
         $_SESSION['answer2'] = 1;
-        $_SESSION['answer3'] = 0;
-        $_SESSION['answer4'] = 0;
-        $_SESSION['answer5'] = 0;
-        
         header("location: ./q2.php");
     }
     else if(strtolower($input_word) == '')
@@ -146,7 +139,14 @@ if (isset($_SESSION['countdown_start_time']) && isset($_SESSION['countdown_durat
     <!-- <div id="countdown"></div> -->
 
     
-
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <span class="navbar-brand"><?php echo $_SESSION['username'];?></span>
+  <ul class="navbar-nav">
+    <li class="nav-item" >
+      <a class="nav-link" href="logout.php">Log Out</a>
+    </li>
+  </ul>
+</nav>
 
     <div class="bg"></div>
     <div class="content">
