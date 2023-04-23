@@ -18,12 +18,11 @@
     <title>Document</title>
 </head>
 <body>
-    Welcome <?php echo $_SESSION['username'] ; ?>
-<!--  -->
-    
+    <!-- Welcome <?php echo $_SESSION['username'] ; ?> -->
+    <div>
+        
+    </div>
 
-
-<!--  -->
     <a href="./logout.php">
         <span>
             Logout
